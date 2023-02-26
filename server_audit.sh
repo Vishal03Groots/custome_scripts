@@ -15,54 +15,64 @@ echo "Server Audit Report for $HOSTNAME" >> "$OUTPUT_FILE"
 echo "Generated on: $DATE" >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 
-# Print the system information to the output file
-echo "System Information:" >> "$OUTPUT_FILE"
+# Get the RAM usage and print it to the output file
+echo "RAM Usage:" >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
-uname -a >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-cat /etc/os-release >> "$OUTPUT_FILE"
+free -m >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 
-# Print the list of installed packages to the output file
-echo "Installed Packages:" >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-dpkg-query -l >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-
-# Print the list of running processes to the output file
-echo "Running Processes:" >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-ps aux >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-
-# Print the network information to the output file
-echo "Network Information:" >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-ip addr >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-
-# Print the disk usage information to the output file
-echo "Disk Usage Information:" >> "$OUTPUT_FILE"
+# Get the disk usage and print it to the output file
+echo "Disk Usage:" >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 df -h >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 
-# Print the list of users to the output file
+# Get the list of users and print it to the output file
 echo "List of Users:" >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 cat /etc/passwd >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+
+# Get the list of running services and print it to the output file
+echo "Running Services:" >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+systemctl list-units --type=service --state=running >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+
+# Get the list of installed applications and their versions and print it to the output file
+echo "Installed Applications:" >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+dpkg-query -l >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+
+# Get the list of open ports and print it to the output file
+echo "Open Ports:" >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+netstat -tuln >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+
+# Get the OS name and version and print it to the output file
+echo "Operating System:" >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+cat /etc/os-release >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+
+# Get the list of websites present on the server and print it to the output file
+echo "Websites Present on the Server:" >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+ls /var/www >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+
+# Get the web server information and print it to the output file
+echo "Web Server Information:" >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+apache2 -v >> "$OUTPUT_FILE" 2>&1
 echo "" >> "$OUTPUT_FILE"
 
 # Print the list of groups to the output file
 echo "List of Groups:" >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 cat /etc/group >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-
-# Print the list of open ports to the output file
-echo "Open Ports:" >> "$OUTPUT_FILE"
-echo "" >> "$OUTPUT_FILE"
-netstat -tuln >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 
 # Print the log entries to the output file
