@@ -60,7 +60,7 @@ echo "" >> "$OUTPUT_FILE"
 # Get the list of websites present on the server and print it to the output file
 echo "Websites Present on the Server:" >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
-ls /var/www >> "$OUTPUT_FILE"
+ls /var/www/html/* >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 
 # Get the web server information and print it to the output file
