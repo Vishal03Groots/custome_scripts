@@ -18,7 +18,7 @@ sudo apt-get install apache2 -y >> $LOG_FILE 2>&1 || { log "Failed to install Ap
 
 # Install PHP 7.4 and required extensions
 log "Installing PHP 7.4 and extensions..."
-sudo apt-get install php7.4 php7.4-mysql php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-soap php7.4-xml php7.4-zip -y >> $LOG_FILE 2>&1 || { log "Failed to install PHP 7.4 and extensions"; exit 1; }
+sudo apt-get install php8.1 php8.1-mysql php8.1-curl php8.1-gd php8.1-intl php8.1-mbstring php8.1-soap php8.1-xml php8.1-zip -y >> $LOG_FILE 2>&1 || { log "Failed to install PHP 7.4 and extensions"; exit 1; }
 
 # Install MySQL 8.0
 log "Installing MySQL 8.0..."
